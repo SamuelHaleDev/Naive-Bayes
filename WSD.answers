@@ -16,3 +16,48 @@ plant.1000048
 It seems probable to me that the words used in this don't heavily have context towards either sense in which case this might be fixed by using a larger corpus.
 plant.1000091
 In this case the words used have more context to a natural environment which therefore should have allowed it to make a decent prediction at being a plant but it didn't which could be fixed by using a larger corpus.
+
+tank.wsd 
+
+Fold 1 accuracy:  0.7
+Fold 2 accuracy:  0.575
+Fold 3 accuracy:  0.775
+Fold 4 accuracy:  0.825
+Fold 5 accuracy:  0.8
+Mean accuracy:  0.735
+
+bass.wsd 
+
+Fold 1 accuracy:  0.3333333333333333
+Fold 2 accuracy:  0.19047619047619047
+Fold 3 accuracy:  0.14285714285714285
+Fold 4 accuracy:  0.2857142857142857
+Fold 5 accuracy:  0.47619047619047616
+Mean accuracy:  0.2857142857142857
+
+palm.wsd
+
+Fold 1 accuracy:  0.8
+Fold 2 accuracy:  0.85
+Fold 3 accuracy:  0.875
+Fold 4 accuracy:  0.9
+Fold 5 accuracy:  0.65
+Mean accuracy:  0.8150000000000001
+
+motion.wsd 
+
+Fold 1 accuracy:  0.7
+Fold 2 accuracy:  0.8
+Fold 3 accuracy:  0.75
+Fold 4 accuracy:  0.8
+Fold 5 accuracy:  0.725
+Mean accuracy:  0.755
+
+crane.wsd
+
+Fold 1 accuracy:  0.3684210526315789
+Fold 2 accuracy:  0.3684210526315789
+Fold 3 accuracy:  0.3684210526315789
+Fold 4 accuracy:  0.3684210526315789
+Fold 5 accuracy:  0.42105263157894735
+Mean accuracy:  0.3789473684210526
