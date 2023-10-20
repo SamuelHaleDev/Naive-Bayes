@@ -51,7 +51,9 @@ def convert_to_word_instances(data):
                 context = instance[i+1].replace('\n', ' ')
                 head = context.split('<head>')[1].split('</head>')[0]
                 context = context.replace(' <head>' + head + '</head> ', '')
-        list_instances.append(WordInstance(instance_id, sense_id, context, head))
+        word_instance = WordInstance(instance_id, sense_id, context, head)
+        word_instance.extract_features()
+        list_instances.append(word_instance)
     return list_instances
 
 def read_data(file_name):
