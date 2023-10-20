@@ -24,6 +24,18 @@ def main():
         else:
             train.append(fold)
             
+class WordInstance:
+    def __init__ (self, instance_id, sense_id, context, head):
+        self.instance_id = instance_id
+        self.sense_id = sense_id
+        self.context = context
+        self.head = head
+        self.features = []
+        
+    def extract_features(self):
+        tokens = self.context.split()
+        self.features = [(tokens[i], tokens[i+1]) for i in range(len(tokens)-1)]
+            
 
 def read_data(file_name):
     with open(file_name, 'r') as f:
