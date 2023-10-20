@@ -1,7 +1,7 @@
+import math
+from collections import defaultdict, Counter
+import string
 # To Do:
-# 1. Import data from .wsd file
-# 2. Build k-fold cross validation function
-# 3. Build feature extraction function
 # 4. Build model training function
 # 5. Build prediction and evaluation function
 # 6. Build main function
@@ -9,6 +9,7 @@
 def main():
     test = []
     train = []
+    vocabulary = defaultdict(Counter)
     
     # Import data from .wsd file
     data = read_data("plant.wsd")
@@ -25,6 +26,9 @@ def main():
             test.append(fold)
         else:
             train.append(fold)
+            vocabulary = initialize_vocabulary(fold, vocabulary)
+            
+    
             
 class WordInstance:
     def __init__ (self, instance_id, sense_id, context, head):
@@ -33,11 +37,13 @@ class WordInstance:
         self.context = context
         self.head = head
         self.features = []
-        
+
     def extract_features(self):
         tokens = self.context.split()
-        self.features = [(tokens[i], tokens[i+1]) for i in range(len(tokens)-1)]
-            
+        for token in tokens:
+            if token not in string.punctuation:
+                self.features.append(token.lower())
+                
 def convert_to_word_instances(data):
     list_instances = []
     for instance in data:
@@ -76,5 +82,11 @@ def k_fold_split(k, data):
     size = len(data) // k
     for i in range(0, len(data), size):
         yield data[i:i + size]
+        
+def initialize_vocabulary(fold, vocabulary):
+    for instance in fold:
+        for feature in instance.features:
+            vocabulary[feature][instance.sense_id] += 1
+    return vocabulary
     
 main()
