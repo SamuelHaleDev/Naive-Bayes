@@ -39,7 +39,6 @@ class WordInstance:
         self.features = [(tokens[i], tokens[i+1]) for i in range(len(tokens)-1)]
             
 def convert_to_word_instances(data):
-    #['<instance id="plant.1000000" docsrc = "BNC/A07">\n', '<answer instance="plant.1000000" senseid="plant%factory"/>\n', '<context>\n', 'Until the mid- and late 1970s, there were simply no rules whereby groupings of parents could obtain a state-financed, multi-denominational school, as the only channels of communication in these matters were those between the Department of Education and the relevant diocesan department or other church board. For example, a new housing estate would be built, the diocese would be informed of the development at the planning stage, and the diocesan office would put in for a school, or an extension for an existing school. The arrangement had been unchanged since the early years of the state and had become entirely natural. Similarly for the protestant community: the school  <head>plant</head>  is owned by the church, or appropriate church body. \n', '</context>\n', '</instance>\n']
     list_instances = []
     for instance in data:
         for i, line in enumerate(instance):
