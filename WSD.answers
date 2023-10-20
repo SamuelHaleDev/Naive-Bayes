@@ -1,0 +1,18 @@
+plant.wsd 
+
+Accuracies:
+Fold 1: 95%
+Fold 2: 84%
+Fold 3: 73%
+Fold 4: 92%
+Fold 5: 86%
+
+Average accuracy over 5 folds: 86%
+
+3 Errors:
+plant.1000019
+Possible that the words used in context are more probably used with the living plant sense. This could be fixed by using a larger corpus.
+plant.1000048
+It seems probable to me that the words used in this don't heavily have context towards either sense in which case this might be fixed by using a larger corpus.
+plant.1000091
+In this case the words used have more context to a natural environment which therefore should have allowed it to make a decent prediction at being a plant but it didn't which could be fixed by using a larger corpus.
