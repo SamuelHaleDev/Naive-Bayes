@@ -10,6 +10,8 @@ def main():
     test = []
     train = []
     vocabulary = defaultdict(Counter)
+    sense = defaultdict(Counter)
+    sense_probabilites = defaultdict(Counter)
     
     # Import data from .wsd file
     data = read_data("plant.wsd")
@@ -26,7 +28,11 @@ def main():
             test.append(fold)
         else:
             train.append(fold)
-            vocabulary = initialize_vocabulary(fold, vocabulary)
+            
+    vocabulary, sense = initialize_vocabulary_and_sense(train, vocabulary, sense)
+    
+    sense_probabilites = prior_probabilities(train, sense, sense_probabilites)
+    print("HI")
             
     
             
@@ -83,10 +89,23 @@ def k_fold_split(k, data):
     for i in range(0, len(data), size):
         yield data[i:i + size]
         
-def initialize_vocabulary(fold, vocabulary):
-    for instance in fold:
-        for feature in instance.features:
-            vocabulary[feature][instance.sense_id] += 1
-    return vocabulary
+def initialize_vocabulary_and_sense(data, vocabulary, sense):
+    for fold in data:
+        for instance in fold:
+            for feature in instance.features:
+                vocabulary[feature][instance.sense_id] += 1
+                sense[instance.sense_id][feature] += 1
+    return vocabulary, sense
+
+def prior_probabilities(data, sense, sense_probability):
+    sense_instance = defaultdict(int)
+    data_length = 0
+    for fold in data:
+        for instance in fold:
+            sense_instance[instance.sense_id] += 1
+            data_length += 1
+    for sense_type in sense:
+        sense_probability[sense_type] = sense_instance[sense_type] / data_length
+    return sense_probability
     
 main()
